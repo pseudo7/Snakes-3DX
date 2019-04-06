@@ -45,7 +45,8 @@ public class GameManager : MonoBehaviour
 
     public void SpawnACollectible()
     {
-        Instantiate(collectiblePrefab, new Vector3(Random.Range(-1f, 1f) * collectibleRadius, 1, Random.Range(-1f, 1f) * collectibleRadius), Quaternion.identity);
+        Vector3 spawnPosition = new Vector3(Random.Range(-1f, 1f) * collectibleRadius, 1, Random.Range(-1f, 1f) * collectibleRadius);
+        Instantiate(collectiblePrefab, spawnPosition, Quaternion.identity);
     }
 
     public void AddATail()
@@ -53,5 +54,6 @@ public class GameManager : MonoBehaviour
         GameObject spawnedTail = Instantiate(tailPrefab, lastCollector.transform.position, tailPrefab.transform.rotation);
         spawnedTail.GetComponent<TransformUpdater>().collector = lastCollector;
         lastCollector = spawnedTail.GetComponent<TransformCollector>();
+        spawnedTail.SetActive(true);
     }
 }
