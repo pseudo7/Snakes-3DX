@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
         AddATail();
     }
 
-    private void Update()
+    void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
             Application.Quit();
@@ -40,6 +40,7 @@ public class GameManager : MonoBehaviour
 
     public void RestartLevel()
     {
+        Handheld.Vibrate();
         UnityEngine.SceneManagement.SceneManager.LoadScene(0);
     }
 
